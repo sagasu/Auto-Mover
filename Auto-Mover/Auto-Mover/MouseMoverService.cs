@@ -6,6 +6,7 @@ namespace Auto_Mover
     {
         private const int Distance = 15;
         private int _direction = 1;
+        private PointWrap _lastPosition;
 
         /// <returns>1 if success, 0 if failure</returns>
         [DllImport("User32.Dll")]
@@ -18,7 +19,11 @@ namespace Auto_Mover
         {
             var position = new PointWrap();
             GetCursorPos(ref position);
-            SetCursorPos(position.X + Distance * _direction, position.Y + Distance * _direction);
+            if (position.Equals(_lastPosition))
+                SetCursorPos(position.X += Distance * _direction, position.Y += Distance * _direction);
+            
+
+            _lastPosition = position;
             _direction *= -1;
         }
     }

@@ -2,11 +2,11 @@ namespace Auto_Mover
 {
     public partial class MoveForm : Form
     {
-        private MouseMoverService mouseMoverService;
+        private readonly MouseMoverService _mouseMoverService;
         public MoveForm()
         {
             InitializeComponent();
-            mouseMoverService = new MouseMoverService();
+            _mouseMoverService = new MouseMoverService();
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -16,7 +16,7 @@ namespace Auto_Mover
 
         private void MoveTimer_Tick(object? sender, EventArgs e)
         {
-            mouseMoverService.MoveMouse();
+            _mouseMoverService.MoveMouse();
         }
     }
 }
