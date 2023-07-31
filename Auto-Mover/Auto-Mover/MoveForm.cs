@@ -6,6 +6,7 @@ namespace Auto_Mover
         public MoveForm()
         {
             InitializeComponent();
+            mouseMoverService = new MouseMoverService();
         }
 
         private void StartButton_Click(object sender, EventArgs e)
